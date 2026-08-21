@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Безопасность: Content Security Policy -->
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; img-src 'self' data:; script-src 'self'; object-src 'none'; base-uri 'self'; form-action 'self'; frame-ancestors 'none'; upgrade-insecure-requests;">
+    <!-- Безопасность: Referrer Policy -->
+    <meta name="referrer" content="strict-origin-when-cross-origin">
+    <!-- Безопасность: X-UA-Compatible -->
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Узнай свой вайб — Тест</title>
+    <link rel="stylesheet" href="test.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600;700;800;900&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Навигация -->
+    <header class="header">
+        <div class="container nav-container">
+            <a href="index.html" class="logo">
+                <img src="images/Logo11131" alt="Study Up" class="logo-icon">
+                <span class="logo-text">STUDY UP</span>
+            </a>
+            <button class="menu-btn" id="menuOpenBtn" aria-label="Меню">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+        </div>
+    </header>
+
+    <!-- Полноэкранное меню -->
+    <div class="fullscreen-menu" id="fullscreenMenu">
+        <button class="close-menu-btn" id="menuCloseBtn">&times;</button>
+        <nav class="menu-links">
+            <a href="index.html#hero">О школе</a>
+            <a href="index.html#for-whom">Кому нужно?</a>
+            <a href="index.html#facts">Факты о нас</a>
+            <a href="index.html#team">Преподаватели</a>
+            <a href="index.html#courses">Курсы</a>
+            <a href="index.html#faq">FAQ</a>
+            <a href="index.html">На главную</a>
+        </nav>
+    </div>
+
+    <main class="test-main">
+        <!-- Стартовый экран теста -->
+        <section class="test-intro" id="testIntro">
+            <div class="container">
+                <div class="intro-content">
+                    <div class="intro-image-placeholder"></div>
+                    <h1 class="intro-title">Узнай свой вайб<br>тест на твой предмет</h1>
+                </div>
+                <div class="action-banner">
+                    <div class="action-left">
+                        <div class="black-square"></div>
+                        <span class="action-text">Пройти тест</span>
+                    </div>
+                    <button class="btn-squeeze" id="startTestBtn">Жмяк</button>
+                </div>
+            </div>
+        </section>
+
+        <!-- Экран викторины (изначально скрыт) -->
+        <section class="quiz-screen hidden" id="quizScreen">
+            <div class="quiz-header-bar">
+                <div class="container">
+                    <h2>ВЫБЕРИ ПОНРАВИВШЕГОСЯ ПЕРСОНАЖА</h2>
+                </div>
+            </div>
+            <div class="container quiz-container">
+                <div class="cards-grid" id="cardsGrid">
+                    <!-- Карточки генерируются через JS -->
+                </div>
+            </div>
+        </section>
+
+        <!-- Экран результата (изначально скрыт) -->
+        <section class="result-screen hidden" id="resultScreen">
+            <div class="container text-center">
+                <h2>Твой результат формируется...</h2>
+                <p>Скоро здесь будет подбор курса!</p>
+                <a href="index.html" class="btn-squeeze" style="margin-top: 20px; display: inline-block; text-decoration: none;">На главную</a>
+            </div>
+        </section>
+    </main>
+
+    <footer class="bottom-bar">
+        <div class="container bottom-bar-inner">
+            <span>Все права защищены</span>
+            <a href="#">Политика и конфедециальность</a>
+        </div>
+    </footer>
+
+    <script src="test.js"></script>
+</body>
+</html>

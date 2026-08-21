@@ -1,0 +1,29 @@
+/* Security headers for Netlify/Vercel deployment */
+/* Uncomment and use when migrating from GitHub Pages */
+
+/*
+/
+  # Prevent clickjacking attacks
+  X-Frame-Options: DENY
+  
+  # Don't allow browsers to guess the content type
+  X-Content-Type-Options: nosniff
+  
+  # Enable browser XSS protection
+  X-XSS-Protection: 1; mode=block
+  
+  # Content Security Policy (strict version via header)
+  Content-Security-Policy: default-src 'self'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; img-src 'self' data:; script-src 'self'; object-src 'none'; base-uri 'self'; form-action 'self'; frame-ancestors 'none'; upgrade-insecure-requests; report-uri /csp-report;
+  
+  # Enforce HTTPS for 1 year (including subdomains)
+  Strict-Transport-Security: max-age=31536000; includeSubDomains; preload
+  
+  # Referrer policy
+  Referrer-Policy: strict-origin-when-cross-origin
+  
+  # Feature policy (permissions)
+  Permissions-Policy: accelerometer=(), camera=(), geolocation=(), gyroscope=(), magnetometer=(), microphone=(), payment=(), usb=()
+  
+  # Cache headers for static assets
+  Cache-Control: public, max-age=31536000, immutable
+*/
