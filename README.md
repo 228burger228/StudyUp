@@ -162,13 +162,14 @@ MIT License
 
 ## 👥 Разработчик
 
-[Ваше имя]
+[Бургер]
+[Ксения]
 
 ---
 
 ## 📞 Контакты
 
-- **Telegram:** @studyup
-- **Email:** info@studyup.com
-- **Instagram:** @study_up_school
-- **VK:** vk.com/studyup
+- **Telegram:** @-------
+- **Email:** --------------
+- **Instagram:** ------------
+- **VK:** -----------
