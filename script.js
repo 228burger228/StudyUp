@@ -21,159 +21,193 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
     // 2. Интерактивные факты о школе (Колесо обозрения)
-    const factsData = [
+document.addEventListener('DOMContentLoaded', function() {
+    // ----- Данные фактов (из вашего колеса) -----
+    const facts = [
         {
-            title: "Наша база",
-            text: "Обучение строится на фундаментальных практических задачах, позволяющих закрепить основу с первых дней."
+            number: 1,
+            title: 'Наша база',
+            short: 'Фундамент знаний',
+            full: 'Обучение строится на фундаментальных практических задачах, позволяющих закрепить основу с первых дней.'
         },
         {
-            title: "Продуктовый стек",
-            text: "Никаких устаревших подходов — только актуальные инструменты и методики от практикующих тимлидов."
+            number: 2,
+            title: 'Продуктовый стек',
+            short: 'Современные технологии',
+            full: 'Изучаем современные технологии: React, Node.js, TypeScript, Docker и другие инструменты реальной разработки.'
         },
         {
-            title: "Насыщенная среда",
-            text: "Все знания упакованы в структурированные модули с регулярной обратной связью по проектам."
+            number: 3,
+            title: 'Насыщенная среда',
+            short: 'Погружение в профессию',
+            full: 'Ежедневные встречи, воркшопы, хакатоны и менторские сессии для полного погружения в профессию.'
         },
         {
-            title: "Сертификация",
-            text: "По окончании курса каждый студент формирует готовое портфолио и получает подтвержденный сертификат."
+            number: 4,
+            title: 'Сертификация',
+            short: 'Подтверждение навыков',
+            full: 'После обучения вы получите государственный диплом и международный сертификат, подтверждающий квалификацию.'
         },
         {
-            title: "Персональный трек",
-            text: "Помогаем составить индивидуальную траекторию развития под твои цели и желаемую сферу."
+            number: 5,
+            title: 'Персональный трек',
+            short: 'Индивидуальный план',
+            full: 'Индивидуальный план развития с учётом вашего уровня и целей — от новичка до senior-разработчика.'
         }
     ];
 
-    const wheel = document.getElementById('factsWheel');
-    const wheelItems = document.querySelectorAll('.wheel-item');
-    const factNumber = document.getElementById('factNumber');
-    const factDisplayTitle = document.getElementById('factDisplayTitle');
-    const factDisplayText = document.getElementById('factDisplayText');
+    const container = document.getElementById('starContainer');
+    const count = facts.length;
+    const radius = 200; // для десктопа
+    const centerX = container.offsetWidth / 2;
+    const centerY = container.offsetHeight / 2;
 
-    let currentFactIndex = 0;
-    let wheelRotation = 0;
-    let isSpinning = false;
-    let spinInterval;
+    // Генерируем карточки
+    facts.forEach((fact, i) => {
+        const card = document.createElement('div');
+        card.className = 'flip-card';
+        card.dataset.index = i;
 
-    function updateFact(index) {
-        currentFactIndex = index;
-        factNumber.textContent = index + 1;
-        factDisplayTitle.textContent = factsData[index].title;
-        factDisplayText.textContent = factsData[index].text;
+        card.innerHTML = `
+            <div class="flip-card-inner">
+                <div class="flip-card-front">
+                    <span class="fact-badge">Факт #${fact.number}</span>
+                    <h3 class="fact-title">${fact.title}</h3>
+                    <p class="fact-short">${fact.short}</p>
+                </div>
+                <div class="flip-card-back">
+                    <p>${fact.full}</p>
+                </div>
+            </div>
+        `;
 
-        // Обновляем активный класс
-        wheelItems.forEach((item, i) => {
-            item.classList.remove('active');
-            if (i === index) {
-                item.classList.add('active');
-            }
+        // Позиционирование звездой (правильный пятиугольник)
+        const angle = (360 / count) * i - 90; // -90, чтобы первый был сверху
+        const rad = angle * Math.PI / 180;
+        const x = centerX + radius * Math.cos(rad) - card.offsetWidth / 2;
+        const y = centerY + radius * Math.sin(rad) - card.offsetHeight / 2;
+        card.style.left = x + 'px';
+        card.style.top = y + 'px';
+
+        // Обработка клика для переворота (на мобильных)
+        card.addEventListener('click', function(e) {
+            // Если на десктопе уже сработал hover, клик не мешает
+            this.classList.toggle('flipped');
         });
-    }
 
-    function spinToFact(index) {
-        if (isSpinning) return;
-
-        // Останавливаем текущее вращение
-        wheel.classList.remove('rotating');
-
-        // Вычисляем угол для поворота к нужному факту
-        const anglePerFact = 360 / factsData.length;
-        const targetAngle = index * anglePerFact;
-        
-        // Добавляем несколько оборотов перед остановкой для эффекта
-        const rotations = 2;
-        const finalAngle = rotations * 360 + targetAngle;
-
-        // Применяем поворот с анимацией
-        isSpinning = true;
-        wheel.style.transition = 'transform 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94)';
-        wheel.style.transform = `rotateZ(${finalAngle}deg)`;
-
-        setTimeout(() => {
-            wheelRotation = finalAngle % 360;
-            updateFact(index);
-            isSpinning = false;
-
-            // Возобновляем медленное вращение
-            wheel.style.transition = 'none';
-            setTimeout(() => {
-                startSlowSpin();
-            }, 100);
-        }, 800);
-    }
-
-    function startSlowSpin() {
-        wheel.classList.add('rotating');
-    }
-
-    // Клик на элемент колеса
-    wheelItems.forEach((item, index) => {
-        item.addEventListener('click', () => {
-            spinToFact(index);
-        });
+        container.appendChild(card);
     });
 
-    // Начинаем с первого факта
-    updateFact(0);
+    // Пересчёт при изменении размера окна (для адаптивности)
+    function reposition() {
+        const containerWidth = container.offsetWidth;
+        const containerHeight = container.offsetHeight;
+        const newRadius = Math.min(containerWidth, containerHeight) * 0.35; // 35% от размера контейнера
+        const cards = container.querySelectorAll('.flip-card');
+        const centerX = containerWidth / 2;
+        const centerY = containerHeight / 2;
 
-    // Автоматическое изменение факта каждые 12 секунд (один оборот колеса)
-    setInterval(() => {
-        if (!isSpinning) {
-            const nextIndex = (currentFactIndex + 1) % factsData.length;
-            spinToFact(nextIndex);
-        }
-    }, 12000);
+        cards.forEach((card, i) => {
+            const angle = (360 / count) * i - 90;
+            const rad = angle * Math.PI / 180;
+            const x = centerX + newRadius * Math.cos(rad) - card.offsetWidth / 2;
+            const y = centerY + newRadius * Math.sin(rad) - card.offsetHeight / 2;
+            card.style.left = x + 'px';
+            card.style.top = y + 'px';
+        });
+    }
 
-    // Запускаем медленное вращение
-    startSlowSpin();
+    window.addEventListener('resize', reposition);
+});
+
+
+
+
+
+
+
+
 
     // 3. Карусель преподавателей
-    const sliderPrev = document.getElementById('sliderPrev');
-    const sliderNext = document.getElementById('sliderNext');
-    const teamTrack = document.getElementById('teamTrack');
-    const sliderPagination = document.getElementById('sliderPagination');
-    const speakerCards = document.querySelectorAll('.speaker-card');
-    const dots = document.querySelectorAll('.slider-pagination .dot');
+const track = document.getElementById('teamTrack');
+const cards = document.querySelectorAll('.speaker-card');
+const prevBtn = document.getElementById('sliderPrev');
+const nextBtn = document.getElementById('sliderNext');
+const dots = document.querySelectorAll('#sliderPagination .dot');
 
-    let currentSlide = 1; // Начинаем со второй карточки (индекс 1)
+// Размеры (должны совпадать с CSS)
+const cardWidth = 200;        // ширина карточки из flex: 0 0 200px
+const gap = 24;              // gap между карточками
+const visible = 3;           // показываем по 3
+const pageWidth = cardWidth * visible + gap * (visible - 1); // 200*3 + 24*2 = 648
 
-    function updateSlider() {
-        const offset = -currentSlide * 304; // 280px card + 24px gap
-        teamTrack.style.transform = `translateX(${offset}px)`;
+const total = cards.length;
+const totalPages = Math.ceil(total / visible); // количество страниц (троек)
+let currentPage = 0; // номер текущей страницы (0,1,2...)
 
-        // Обновляем активный класс на карточках
-        speakerCards.forEach((card, idx) => {
-            card.classList.remove('active');
-            if (idx === currentSlide) {
+function updateSlider() {
+    // Сдвигаем трек на текущую страницу
+    const offset = -currentPage * pageWidth;
+    track.style.transform = `translateX(${offset}px)`;
+
+    // Обновляем активную карточку (центральная на текущей странице)
+    cards.forEach((card, idx) => {
+        card.classList.remove('active');
+        const start = currentPage * visible;          // индекс первой карточки на странице
+        const end = Math.min(start + visible, total); // индекс последней (не включительно)
+        if (idx >= start && idx < end) {
+            // Если это вторая карточка в тройке (и она существует) – делаем активной
+            if (idx === start + 1 && start + 1 < end) {
                 card.classList.add('active');
             }
-        });
-
-        // Обновляем точки pagination
-        dots.forEach((dot, idx) => {
-            dot.classList.remove('active');
-            if (idx === currentSlide) {
-                dot.classList.add('active');
-            }
-        });
-    }
-
-    sliderPrev.addEventListener('click', () => {
-        currentSlide = (currentSlide - 1 + speakerCards.length) % speakerCards.length;
-        updateSlider();
+        }
     });
 
-    sliderNext.addEventListener('click', () => {
-        currentSlide = (currentSlide + 1) % speakerCards.length;
-        updateSlider();
-    });
-
+    // Обновляем точки пагинации
     dots.forEach((dot, idx) => {
-        dot.addEventListener('click', () => {
-            currentSlide = idx;
-            updateSlider();
-        });
+        dot.classList.toggle('active', idx === currentPage);
     });
+}
+
+// Кнопки "назад" и "вперёд"
+prevBtn.addEventListener('click', () => {
+    if (currentPage > 0) {
+        currentPage--;
+        updateSlider();
+    }
+});
+
+nextBtn.addEventListener('click', () => {
+    if (currentPage < totalPages - 1) {
+        currentPage++;
+        updateSlider();
+    }
+});
+
+// Клик по точкам – переход на страницу
+dots.forEach((dot, idx) => {
+    dot.addEventListener('click', () => {
+        currentPage = idx;
+        updateSlider();
+    });
+});
+
+// Инициализация
+updateSlider();
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
     // 4. FAQ Аккордеон
     const faqRows = document.querySelectorAll('.faq-row');
