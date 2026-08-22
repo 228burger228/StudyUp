@@ -128,73 +128,75 @@ document.addEventListener('DOMContentLoaded', function() {
 
 
 
-    // 3. Карусель преподавателей
+    
+    // Карусель преподавателей
 const track = document.getElementById('teamTrack');
 const cards = document.querySelectorAll('.speaker-card');
 const prevBtn = document.getElementById('sliderPrev');
 const nextBtn = document.getElementById('sliderNext');
 const dots = document.querySelectorAll('#sliderPagination .dot');
 
-// Размеры (должны совпадать с CSS)
-const cardWidth = 200;        // ширина карточки из flex: 0 0 200px
-const gap = 24;              // gap между карточками
-const visible = 3;           // показываем по 3
-const pageWidth = cardWidth * visible + gap * (visible - 1); // 200*3 + 24*2 = 648
+if (track && cards.length > 0) {
+    const visible = 3;
+    const total = cards.length;
+    const totalPages = Math.ceil(total / visible);
+    let currentPage = 0;
 
-const total = cards.length;
-const totalPages = Math.ceil(total / visible); // количество страниц (троек)
-let currentPage = 0; // номер текущей страницы (0,1,2...)
+    function updateSlider() {
+        // Вычисляем реальные размеры карточки и отступа из стилей
+        const cardWidth = cards[0].offsetWidth;
+        const trackStyle = window.getComputedStyle(track);
+        const gap = parseFloat(trackStyle.gap) || 24;
+        
+        // Смещение строго на блок из 3 карточек
+        const shiftAmount = (cardWidth * visible + gap * visible) * currentPage;
+        track.style.transform = `translateX(-${shiftAmount}px)`;
 
-function updateSlider() {
-    // Сдвигаем трек на текущую страницу
-    const offset = -currentPage * pageWidth;
-    track.style.transform = `translateX(${offset}px)`;
-
-    // Обновляем активную карточку (центральная на текущей странице)
-    cards.forEach((card, idx) => {
-        card.classList.remove('active');
-        const start = currentPage * visible;          // индекс первой карточки на странице
-        const end = Math.min(start + visible, total); // индекс последней (не включительно)
-        if (idx >= start && idx < end) {
-            // Если это вторая карточка в тройке (и она существует) – делаем активной
+        // Переключение класса active для центральной карточки текущей тройки
+        cards.forEach((card, idx) => {
+            card.classList.remove('active');
+            const start = currentPage * visible;
+            const end = Math.min(start + visible, total);
+            
             if (idx === start + 1 && start + 1 < end) {
                 card.classList.add('active');
             }
-        }
-    });
+        });
 
-    // Обновляем точки пагинации
+        // Обновление индикаторов
+        dots.forEach((dot, idx) => {
+            dot.classList.toggle('active', idx === currentPage);
+        });
+    }
+
+    if (prevBtn) {
+        prevBtn.addEventListener('click', () => {
+            if (currentPage > 0) {
+                currentPage--;
+                updateSlider();
+            }
+        });
+    }
+
+    if (nextBtn) {
+        nextBtn.addEventListener('click', () => {
+            if (currentPage < totalPages - 1) {
+                currentPage++;
+                updateSlider();
+            }
+        });
+    }
+
     dots.forEach((dot, idx) => {
-        dot.classList.toggle('active', idx === currentPage);
+        dot.addEventListener('click', () => {
+            currentPage = idx;
+            updateSlider();
+        });
     });
+
+    window.addEventListener('resize', updateSlider);
+    updateSlider();
 }
-
-// Кнопки "назад" и "вперёд"
-prevBtn.addEventListener('click', () => {
-    if (currentPage > 0) {
-        currentPage--;
-        updateSlider();
-    }
-});
-
-nextBtn.addEventListener('click', () => {
-    if (currentPage < totalPages - 1) {
-        currentPage++;
-        updateSlider();
-    }
-});
-
-// Клик по точкам – переход на страницу
-dots.forEach((dot, idx) => {
-    dot.addEventListener('click', () => {
-        currentPage = idx;
-        updateSlider();
-    });
-});
-
-// Инициализация
-updateSlider();
-
 
 
 
