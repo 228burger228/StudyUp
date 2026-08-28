@@ -3,94 +3,147 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <!-- Безопасность: Content Security Policy -->
-    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; img-src 'self' data:; script-src 'self'; object-src 'none'; base-uri 'self'; form-action 'self'; frame-ancestors 'none'; upgrade-insecure-requests;">
-    <!-- Безопасность: Referrer Policy -->
-    <meta name="referrer" content="strict-origin-when-cross-origin">
-    <!-- Безопасность: X-UA-Compatible -->
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>Узнай свой вайб — Тест</title>
+    <title>STUDY UP — Узнай свой вайб</title>
     <link rel="stylesheet" href="test.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600;700;800;900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;800;900&display=swap" rel="stylesheet">
 </head>
 <body>
     <!-- Навигация -->
     <header class="header">
         <div class="container nav-container">
             <a href="index.html" class="logo">
-                <img src="images/Logo11131" alt="Study Up" class="logo-icon">
+                <img src="images/Logo11131" alt="Study Up Logo" class="logo-icon">
                 <span class="logo-text">STUDY UP</span>
             </a>
-            <button class="menu-btn" id="menuOpenBtn" aria-label="Меню">
+            <button class="menu-btn" id="menuToggle" aria-label="Открыть меню">
                 <span></span>
                 <span></span>
                 <span></span>
             </button>
         </div>
+
+        <!-- Полноэкранное меню -->
+        <div class="fullscreen-menu" id="fullscreenMenu">
+            <button class="close-menu-btn" id="menuClose">&times;</button>
+            <nav class="menu-links">
+                <a href="index.html#hero">ЕГЭ и ОГЭ</a>
+                <a href="index.html#team">Преподаватели</a>
+                <a href="index.html#courses">Цены</a>
+                <a href="index.html#reviews">Отзывы</a>
+                <a href="index.html#for-parents">Родителям</a>
+                <a href="test.html">Тест</a>
+            </nav>
+        </div>
     </header>
 
-    <!-- Полноэкранное меню -->
-    <div class="fullscreen-menu" id="fullscreenMenu">
-        <button class="close-menu-btn" id="menuCloseBtn">&times;</button>
-        <nav class="menu-links">
-            <a href="index.html#hero">О школе</a>
-            <a href="index.html#for-whom">Кому нужно?</a>
-            <a href="index.html#facts">Факты о нас</a>
-            <a href="index.html#team">Преподаватели</a>
-            <a href="index.html#courses">Курсы</a>
-            <a href="index.html#faq">FAQ</a>
-            <a href="index.html">На главную</a>
-        </nav>
+    <div id="app" class="test-container">
+        
+        <!-- ЭКРАН 1: 5 СИТУАЦИЙ -->
+        <div id="screen-questions" class="screen active">
+            <div class="progress-bar">
+                <div class="progress-fill" id="progressFill"></div>
+            </div>
+
+            <div class="question-content">
+                <h2 id="questionTitle">Загружаю...</h2>
+                <p id="questionText">Пожалуйста, подождите</p>
+                
+                <div class="answers-grid" id="answersGrid">
+                    <!-- Генерируется в JS -->
+                </div>
+            </div>
+        </div>
+
+        <!-- ЭКРАН 2: ФОРМА ЗАХВАТА -->
+        <div id="screen-form" class="screen">
+            <div class="form-container">
+                <h2>Твой мемный ID-паспорт готов на 100%! 🎉</h2>
+                <p class="form-subtitle">Куда прислать карточку и персональный чек-лист «Топ-10 ловушек ОГЭ»?</p>
+
+                <form id="captureForm" class="capture-form">
+                    <div class="form-group">
+                        <input 
+                            type="text" 
+                            id="contactInput" 
+                            placeholder="@username в TG или номер телефона"
+                            required
+                        >
+                    </div>
+
+                    <label class="checkbox-group">
+                        <input type="checkbox" id="policyCheckbox" required>
+                        <span>Согласен с <a href="/policy" target="_blank">обработкой персональных данных</a></span>
+                    </label>
+
+                    <button type="submit" class="btn-submit">Показать мой вайб</button>
+                </form>
+
+                <p class="form-note">✅ Бесплатно ✅ Без обязательств ✅ За 30 секунд</p>
+            </div>
+        </div>
+
+        <!-- ЭКРАН 3: ФИНАЛЬНАЯ КАРТОЧКА -->
+        <div id="screen-result" class="screen">
+            <div class="result-container">
+                
+                <!-- CANVAS КАРТОЧКА 9:16 -->
+                <div class="card-wrapper">
+                    <canvas id="cardCanvas" width="540" height="960"></canvas>
+                </div>
+
+                <!-- ИНФОРМАЦИЯ -->
+                <div class="result-info">
+                    <h2 id="resultTitle">Ты — ФИЗМАТ ГЕНИЙ</h2>
+                    <p id="resultDesc">Твой архетип: Логик & Расчётчик</p>
+                    <p id="courseRecommendation">Рекомендуем: Курс "Математика"</p>
+                </div>
+
+                <!-- КНОПКИ ШЕРИНГА -->
+                <div class="share-buttons">
+                    <button id="downloadBtn" class="btn-share btn-stories">
+                        📲 В сторис
+                    </button>
+                    <button id="shareBtn" class="btn-share btn-telegram">
+                        ✈️ Забрать гайд в Telegram
+                    </button>
+                </div>
+
+                <!-- ВОЗВРАТ -->
+                <button onclick="location.href='index.html'" class="btn-back">
+                    ← Вернуться на главную
+                </button>
+            </div>
+        </div>
     </div>
 
-    <main class="test-main">
-        <!-- Стартовый экран теста -->
-        <section class="test-intro" id="testIntro">
-            <div class="container">
-                <div class="intro-content">
-                    <div class="intro-image-placeholder"></div>
-                    <h1 class="intro-title">Узнай свой вайб<br>тест на твой предмет</h1>
-                </div>
-                <div class="action-banner">
-                    <div class="action-left">
-                        <div class="black-square"></div>
-                        <span class="action-text">Пройти тест</span>
-                    </div>
-                    <button class="btn-squeeze" id="startTestBtn">Жмяк</button>
-                </div>
+    <!-- Подвал -->
+    <footer class="footer">
+        <div class="container footer-content">
+            <div class="footer-section">
+                <h4>StudyUp</h4>
+                <p>Онлайн-подготовка к ЕГЭ и ОГЭ</p>
+                <p class="contact">📞 support@studyup.ru</p>
             </div>
-        </section>
-
-        <!-- Экран викторины (изначально скрыт) -->
-        <section class="quiz-screen hidden" id="quizScreen">
-            <div class="quiz-header-bar">
-                <div class="container">
-                    <h2>ВЫБЕРИ ПОНРАВИВШЕГОСЯ ПЕРСОНАЖА</h2>
-                </div>
+            <div class="footer-section">
+                <h4>Документы</h4>
+                <ul>
+                    <li><a href="/policy">Политика конфиденциальности</a></li>
+                    <li><a href="/offer">Оферта</a></li>
+                    <li><a href="/contract">Договор</a></li>
+                </ul>
             </div>
-            <div class="container quiz-container">
-                <div class="cards-grid" id="cardsGrid">
-                    <!-- Карточки генерируются через JS -->
-                </div>
+            <div class="footer-section">
+                <h4>Соцсети</h4>
+                <ul>
+                    <li><a href="https://vk.com/studyup" target="_blank">ВКонтакте</a></li>
+                    <li><a href="https://t.me/studyup" target="_blank">Telegram</a></li>
+                </ul>
             </div>
-        </section>
-
-        <!-- Экран результата (изначально скрыт) -->
-        <section class="result-screen hidden" id="resultScreen">
-            <div class="container text-center">
-                <h2>Твой результат формируется...</h2>
-                <p>Скоро здесь будет подбор курса!</p>
-                <a href="index.html" class="btn-squeeze" style="margin-top: 20px; display: inline-block; text-decoration: none;">На главную</a>
-            </div>
-        </section>
-    </main>
-
-    <footer class="bottom-bar">
-        <div class="container bottom-bar-inner">
-            <span>Все права защищены</span>
-            <a href="#">Политика и конфедециальность</a>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2026 StudyUp. Все права защищены.</p>
         </div>
     </footer>
 
