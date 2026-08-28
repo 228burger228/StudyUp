@@ -110,59 +110,57 @@ const dots = document.querySelectorAll('#sliderPagination .dot');
 
 // Проверяем наличие элементов
 if (track && cards.length > 0) {
-    // Размеры
-    const cardWidth = 280;  // обновлено под новую ширину
-    const gap = 24;
-    const visible = 1;  // показываем по 1 карточке (так как их мало)
-    const pageWidth = cardWidth + gap;
-    
+    const cardWidth = 320;
+    const gap = 32;
     const total = cards.length;
-    const totalPages = total;
-    let currentPage = 0;
-    
+    let currentPage = 1; // Начинаем со второй карточки (индекс 1)
+
     function updateSlider() {
-        const offset = -currentPage * pageWidth;
-        track.style.transform = `translateX(${offset}px)`;
+        // Центрируем активную карточку
+        // Вычисляем смещение так, чтобы активная карточка была в центре viewport
+        const viewportCenter = track.parentElement.offsetWidth / 2;
+        const cardCenter = cardWidth / 2;
+        const offset = viewportCenter - cardCenter - (currentPage * (cardWidth + gap));
         
+        track.style.transform = `translateX(${offset}px)`;
+
         cards.forEach((card, idx) => {
             card.classList.toggle('active', idx === currentPage);
         });
-        
+
         dots.forEach((dot, idx) => {
             dot.classList.toggle('active', idx === currentPage);
         });
     }
-    
+
     if (prevBtn) {
         prevBtn.addEventListener('click', () => {
-            if (currentPage > 0) {
-                currentPage--;
-                updateSlider();
-            }
+            // Зацикленное листание: если на первой — переходим на последнюю
+            currentPage = (currentPage - 1 + total) % total;
+            updateSlider();
         });
     }
-    
+
     if (nextBtn) {
         nextBtn.addEventListener('click', () => {
-            if (currentPage < totalPages - 1) {
-                currentPage++;
-                updateSlider();
-            }
+            // Зацикленное листание: если на последней — переходим на первую
+            currentPage = (currentPage + 1) % total;
+            updateSlider();
         });
     }
-    
+
     dots.forEach((dot, idx) => {
-        if (idx < totalPages) {
-            dot.addEventListener('click', () => {
-                currentPage = idx;
-                updateSlider();
-            });
-        } else {
-            dot.style.display = 'none';  // скрываем лишние точки
-        }
+        dot.addEventListener('click', () => {
+            currentPage = idx;
+            updateSlider();
+        });
     });
-    
+
+    // Инициализация
     updateSlider();
+    
+    // Пересчет при ресайзе окна
+    window.addEventListener('resize', updateSlider);
 }
 
 

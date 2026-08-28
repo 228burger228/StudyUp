@@ -1,0 +1,50 @@
+:root {
+    --bg-purple: #c4b5fd;
+    --bg-purple-light: #e0d7ff;
+    --bg-dark-purple: #1e0538;
+    --purple-main: #6b21a8;
+    --accent-yellow: #f59e0b;
+    --accent-yellow-btn: #f5a623;
+    --card-lavender: #a79bc8;
+    --text-dark: #111827;
+    --text-white: #ffffff;
+    --font-family: 'Montserrat', sans-serif;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: var(--font-family);
+    background-color: #ffffff;
+    color: var(--text-dark);
+    overflow-x: hidden;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 24px;
+}
+
+.section-title {
+    font-size: 2.5rem;
+    font-weight: 900;
+    letter-spacing: -0.5px;
+    margin-bottom: 60px;
+}
+
+.text-center {
+    text-align: center;
+}
+
+.purple-text {
+    color: #8b5cf6;
+}
+
+.yellow-text {
+    color: var(--accent-yellow);
+}
