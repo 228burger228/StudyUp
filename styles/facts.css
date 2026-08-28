@@ -1,0 +1,139 @@
+/* ----- Секция фактов (звезда) ----- */
+.facts-star-section {
+    padding: 80px 0;
+    background: linear-gradient(135deg, #f5f3ff, #ede9fe);
+    text-align: center;
+}
+
+.star-container {
+    position: relative;
+    width: 600px;
+    height: 600px;
+    margin: 0 auto;
+}
+
+/* ----- Flip-карточка ----- */
+.flip-card {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    width: 170px;
+    height: 170px;
+    perspective: 1000px;
+    cursor: pointer;
+    /* Трансформации заданы ниже */
+}
+
+/* Позиционирование звездой с центрированием */
+.flip-card:nth-child(1) { transform: translate(-15%, -95%) rotate(0deg) translateX(200px) rotate(0deg); }
+.flip-card:nth-child(2) { transform: translate(15%, -70%) rotate(72deg) translateX(200px) rotate(-72deg); }
+.flip-card:nth-child(3) { transform: translate(-50%, -20%) rotate(144deg) translateX(200px) rotate(-144deg); }
+.flip-card:nth-child(4) { transform: translate(-100%, -15%) rotate(216deg) translateX(200px) rotate(-216deg); }
+.flip-card:nth-child(5) { transform: translate(-90%, -70%) rotate(288deg) translateX(200px) rotate(-288deg); }
+
+.flip-card-inner {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    transition: transform 0.6s cubic-bezier(0.23, 1, 0.32, 1);
+    transform-style: preserve-3d;
+}
+
+/* ПЕРЕВОРОТ ПРИ НАВЕДЕНИИ */
+@media(hover: hover){
+    .flip-card:hover .flip-card-inner {
+        transform: rotateY(180deg);
+    }
+}
+
+/* ПЕРЕВОРОТ ПО КЛИКУ (класс .flipped) */
+.flip-card.flipped .flip-card-inner {
+    transform: rotateY(180deg);
+}
+
+.flip-card-front,
+.flip-card-back {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    backface-visibility: hidden;
+    border-radius: 24px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+    text-align: center;
+}
+
+.flip-card-front {
+    background: linear-gradient(145deg, #ffffff, #f0ebff);
+    border: 2px solid rgba(109, 40, 217, 0.15);
+    color: #1e1e2a;
+}
+
+.flip-card-front .fact-badge {
+    font-size: 0.7rem;
+    font-weight: 700;
+    color: #6d28d9;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    margin-bottom: 6px;
+}
+
+.flip-card-front .fact-title {
+    font-size: 1.0rem;
+    font-weight: 800;
+    margin: 4px 0;
+    color: #1e1e2a;
+}
+
+.flip-card-front .fact-short {
+    font-size: 0.85rem;
+    color: #4b4b5a;
+    margin: 0;
+}
+
+.flip-card-back {
+    background: linear-gradient(145deg, #6d28d9, #4c1d95);
+    color: #ffffff;
+    transform: rotateY(180deg);
+    box-shadow: 0 10px 30px rgba(109, 40, 217, 0.3);
+}
+
+.flip-card-back p {
+    font-size: 0.75rem;
+    line-height: 1.0;
+    margin: 0;
+}
+
+/* ----- Адаптивность (экраны ≤ 768px) ----- */
+@media(max-width: 768px) {
+    .star-container {
+        width: 320px;
+        height: 320px;
+    }
+    .flip-card {
+        width: 100px;
+        height: 130px;
+    }
+    .flip-card:nth-child(1) { transform: translate(-50%, -50%) rotate(0deg) translateX(110px) rotate(0deg); }
+    .flip-card:nth-child(2) { transform: translate(-50%, -50%) rotate(72deg) translateX(110px) rotate(-72deg); }
+    .flip-card:nth-child(3) { transform: translate(-50%, -50%) rotate(144deg) translateX(110px) rotate(-144deg); }
+    .flip-card:nth-child(4) { transform: translate(-50%, -50%) rotate(216deg) translateX(110px) rotate(-216deg); }
+    .flip-card:nth-child(5) { transform: translate(-50%, -50%) rotate(288deg) translateX(110px) rotate(-288deg); }
+
+    .flip-card-front .fact-title {
+        font-size: 0.9rem;
+    }
+    .flip-card-front .fact-short {
+        font-size: 0.7rem;
+    }
+    .flip-card-back p {
+        font-size: 0.7rem;
+    }
+    .section-title {
+        font-size: 2rem;
+    }
+}

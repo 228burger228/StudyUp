@@ -1,0 +1,60 @@
+/* ============ ПОДВАЛ ============ */
+.footer {
+    background-color: var(--bg-dark-purple);
+    color: #d1d5db;
+    padding: 40px 0 20px;
+}
+
+.footer-content {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    gap: 32px;
+    margin-bottom: 24px;
+}
+
+.footer-section h4 {
+    color: #fff;
+    font-size: 1rem;
+    margin-bottom: 12px;
+    font-weight: 700;
+}
+
+.footer-section p,
+.footer-section ul li {
+    font-size: 0.85rem;
+    line-height: 1.6;
+    margin-bottom: 8px;
+}
+
+.footer-section ul {
+    list-style: none;
+    padding: 0;
+}
+
+.footer-section a {
+    color: #d1d5db;
+    text-decoration: none;
+    transition: color 0.2s;
+}
+
+.footer-section a:hover {
+    color: var(--accent-yellow);
+}
+
+.footer-section .contact {
+    margin-top: 8px;
+}
+
+.footer-bottom {
+    border-top: 1px solid rgba(255,255,255,0.1);
+    padding-top: 16px;
+    text-align: center;
+    font-size: 0.8rem;
+}
+
+/* Responsive */
+@media (max-width: 600px) {
+    .footer-content {
+        grid-template-columns: 1fr 1fr;
+    }
+}

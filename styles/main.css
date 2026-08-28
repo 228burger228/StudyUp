@@ -1,0 +1,13 @@
+/* Основной файл стилей — импортирует все модули */
+
+@import url('base.css');
+@import url('header.css');
+@import url('hero.css');
+@import url('audience.css');
+@import url('facts.css');
+@import url('team.css');
+@import url('courses.css');
+@import url('faq.css');
+@import url('reviews.css');
+@import url('footer.css');
+@import url('modal.css');
