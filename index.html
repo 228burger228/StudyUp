@@ -202,42 +202,75 @@
                     <div class="team-cards-viewport">
                         <div class="team-cards-track" id="teamTrack">
                             <!-- Преподаватель 1: Математика -->
-                            <div class="speaker-card active">
-                                <div class="speaker-avatar-wrapper">
-                                    <span class="online-indicator">Online</span>
-                                    <div class="avatar-placeholder"></div>
+                            <div class="speaker-card">
+                                <div class="speaker-photo">
+                                    <div class="photo-placeholder"></div>
                                 </div>
-                                <h3 class="speaker-name">Иван Петров</h3>
-                                <span class="speaker-role">Преподаватель математики</span>
-                                <div class="speaker-tags">
-                                    <span>Балл ЕГЭ: 98</span>
-                                    <span>250+ учеников на 90+</span>
-                                    <span>МГУ мехмат</span>
-                                    <span>7 лет опыта</span>
+                                <div class="speaker-info">
+                                    <h3 class="speaker-name">Иван Петров</h3>
+                                    <span class="speaker-role">Математика</span>
+                                    <div class="speaker-stats">
+                                        <div class="stat-item"><span class="stat-value">98</span><span class="stat-label">балл ЕГЭ</span></div>
+                                        <div class="stat-item"><span class="stat-value">250+</span><span class="stat-label">учеников</span></div>
+                                        <div class="stat-item"><span class="stat-value">7 лет</span><span class="stat-label">опыта</span></div>
+                                    </div>
+                                    <p class="speaker-quote">Разбираем каждую задачу второй части по критериям ФИПИ</p>
                                 </div>
-                                <p class="speaker-quote">Разбираем каждую задачу второй части по критериям ФИПИ</p>
                             </div>
                             <!-- Преподаватель 2: Русский язык -->
+                            <div class="speaker-card active">
+                                <div class="speaker-photo">
+                                    <div class="photo-placeholder"></div>
+                                </div>
+                                <div class="speaker-info">
+                                    <h3 class="speaker-name">Анна Сидорова</h3>
+                                    <span class="speaker-role">Русский язык</span>
+                                    <div class="speaker-stats">
+                                        <div class="stat-item"><span class="stat-value">96</span><span class="stat-label">балл ЕГЭ</span></div>
+                                        <div class="stat-item"><span class="stat-value">300+</span><span class="stat-label">учеников</span></div>
+                                        <div class="stat-item"><span class="stat-value">5 лет</span><span class="stat-label">опыта</span></div>
+                                    </div>
+                                    <p class="speaker-quote">Сочинение — это структура. Научу писать на максимум</p>
+                                </div>
+                            </div>
+                            <!-- Преподаватель 3: Физика -->
                             <div class="speaker-card">
-                                <div class="speaker-avatar-wrapper">
-                                    <span class="online-indicator">Online</span>
-                                    <div class="avatar-placeholder"></div>
+                                <div class="speaker-photo">
+                                    <div class="photo-placeholder"></div>
                                 </div>
-                                <h3 class="speaker-name">Анна Сидорова</h3>
-                                <span class="speaker-role">Преподаватель русского языка</span>
-                                <div class="speaker-tags">
-                                    <span>Балл ЕГЭ: 96</span>
-                                    <span>300+ учеников на 90+</span>
-                                    <span>МГУ филфак</span>
-                                    <span>5 лет опыта</span>
+                                <div class="speaker-info">
+                                    <h3 class="speaker-name">Дмитрий Волков</h3>
+                                    <span class="speaker-role">Физика</span>
+                                    <div class="speaker-stats">
+                                        <div class="stat-item"><span class="stat-value">95</span><span class="stat-label">балл ЕГЭ</span></div>
+                                        <div class="stat-item"><span class="stat-value">180+</span><span class="stat-label">учеников</span></div>
+                                        <div class="stat-item"><span class="stat-value">6 лет</span><span class="stat-label">опыта</span></div>
+                                    </div>
+                                    <p class="speaker-quote">Физика — это логика. Учу решать задачи, а не зубрить формулы</p>
                                 </div>
-                                <p class="speaker-quote">Сочинение — это структура. Научу писать на максимум</p>
+                            </div>
+                            <!-- Преподаватель 4: Информатика -->
+                            <div class="speaker-card">
+                                <div class="speaker-photo">
+                                    <div class="photo-placeholder"></div>
+                                </div>
+                                <div class="speaker-info">
+                                    <h3 class="speaker-name">Елена Козлова</h3>
+                                    <span class="speaker-role">Информатика</span>
+                                    <div class="speaker-stats">
+                                        <div class="stat-item"><span class="stat-value">100</span><span class="stat-label">балл ЕГЭ</span></div>
+                                        <div class="stat-item"><span class="stat-value">200+</span><span class="stat-label">учеников</span></div>
+                                        <div class="stat-item"><span class="stat-value">4 года</span><span class="stat-label">опыта</span></div>
+                                    </div>
+                                    <p class="speaker-quote">От алгоритмов до Python — готовлю к максимальному баллу</p>
+                                </div>
                             </div>
                         </div>
                     </div>
                     <button class="slider-arrow next" id="sliderNext" aria-label="Вперед">&#10095;</button>
                 </div>
                 <div class="slider-pagination" id="sliderPagination">
+                    <span class="dot"></span>
                     <span class="dot active"></span>
                     <span class="dot"></span>
                     <span class="dot"></span>
