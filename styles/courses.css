@@ -13,19 +13,28 @@
 .course-pill-card {
     background-color: var(--card-lavender);
     border-radius: 28px;
-    padding: 16px;
+    padding: 20px;
     display: flex;
-    gap: 16px;
-    align-items: center;
+    gap: 20px;
+    align-items: stretch;
+    min-height: 200px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.course-pill-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12);
 }
 
 .course-img-box {
-    width: 110px;
-    height: 140px;
+    width: 140px;
+    height: auto;
     background: #fff;
-    border-radius: 16px;
+    border-radius: 20px;
     overflow: hidden;
     flex-shrink: 0;
+    display: flex;
+    align-items: center;
 }
 
 .course-img-box img {
@@ -34,25 +43,63 @@
     object-fit: cover;
 }
 
+.course-info {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 8px 0;
+}
+
 .course-info h3 {
-    font-size: 1.25rem;
+    font-size: 1.4rem;
     font-weight: 900;
     color: #1e1b4b;
+    margin-bottom: 8px;
 }
 
 .course-info p {
-    font-size: 0.85rem;
-    margin-bottom: 20px;
+    font-size: 0.95rem;
+    color: #64748b;
+    margin-bottom: auto;
 }
 
 .course-link {
-    text-decoration: none;
-    color: #000;
-    font-weight: 800;
-    font-size: 0.9rem;
+    background: var(--accent-yellow-btn);
+    color: #fff;
+    font-weight: 700;
+    font-size: 0.95rem;
+    padding: 12px 24px;
+    border: none;
+    border-radius: 14px;
+    cursor: pointer;
+    transition: all 0.3s ease;
     display: inline-flex;
     align-items: center;
-    gap: 6px;
+    gap: 8px;
+    align-self: flex-start;
+    margin-top: 16px;
+    box-shadow: 0 4px 14px rgba(245, 166, 35, 0.35);
+    white-space: nowrap;
+}
+
+.course-link:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(245, 166, 35, 0.45);
+    background: #f59e0b;
+}
+
+.course-link:active {
+    transform: translateY(0);
+}
+
+.course-link span {
+    font-size: 1.2rem;
+    transition: transform 0.3s ease;
+}
+
+.course-link:hover span {
+    transform: translateX(4px);
 }
 
 .socials-footer-block {
