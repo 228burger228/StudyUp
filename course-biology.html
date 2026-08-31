@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Курс по ОГЭ Биология — StudyUp</title>
+    <link rel="stylesheet" href="styles/main.css">
+    <link rel="stylesheet" href="styles/course-page.css">
+</head>
+<body>
+    <header class="header">
+        <div class="container nav-container">
+            <a href="index.html" class="logo"><img src="images/Logo11131" alt="Logo" class="logo-img"><span class="logo-text">STUDY UP</span></a>
+            <button class="menu-btn" id="menuToggle" aria-label="Открыть меню">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+        </div>
+    </header>
+
+    <div class="fullscreen-menu" id="fullscreenMenu">
+        <button class="close-menu-btn" id="menuClose">&times;</button>
+        <nav class="menu-links">
+            <a href="index.html#hero">ОГЭ</a>
+            <a href="index.html#for-whom">Кому подойдёт</a>
+            <a href="index.html#team">Преподаватели</a>
+            <a href="index.html#courses">Курсы</a>
+            <a href="index.html#reviews">Отзывы</a>
+            <a href="index.html#faq">FAQ</a>
+        </nav>
+    </div>
+
+    <main class="course-page">
+        <section class="course-hero">
+            <h1>🧬 Подготовка к ОГЭ по Биологии</h1>
+            <p>Самый понимающий и чуткий преподаватель нашей школы</p>
+            <button class="course-hero-btn" onclick="document.querySelector('.course-cta').scrollIntoView({behavior: 'smooth'})">Записаться на курс</button>
+        </section>
+
+        <div class="course-container">
+            <div class="course-main">
+                <div class="course-info-grid">
+                    <div class="course-info-item">
+                        <div class="label">Уровень</div>
+                        <div class="value">9 класс</div>
+                    </div>
+                    <div class="course-info-item">
+                        <div class="label">Формат</div>
+                        <div class="value">Мини-группы</div>
+                    </div>
+                    <div class="course-info-item">
+                        <div class="label">Занятий</div>
+                        <div class="value accent">2 в неделю</div>
+                    </div>
+                    <div class="course-info-item">
+                        <div class="label">Поддержка</div>
+                        <div class="value">24/7</div>
+                    </div>
+                </div>
+
+                <div class="course-content">
+                    <h2>Что ты получишь</h2>
+                    <h3>📊 Полная теория для экзамена</h3>
+                    <p>100% необходимого материала: клетка, организм, экосистемы — всё структурировано по критериям ОГЭ.</p>
+
+                    <h3>🔬 Практические навыки</h3>
+                    <p>Разбор сложных тем, практика с заданиями, система пробников. Ты поймёшь механизм экзамена.</p>
+
+                    <h3>📝 Из чего состоит курс:</h3>
+                    <ul class="course-list">
+                        <li><strong>2+ вебинара в неделю</strong> с экспертом биологии</li>
+                        <li><strong>Дополнительные уроки</strong> для разбора сложных тем</li>
+                        <li><strong>Регулярные пробники</strong> показывают реальный результат</li>
+                        <li><strong>Практика по ошибкам</strong> вместо однотипных упражнений</li>
+                        <li><strong>Эксклюзивные схемы и таблицы</strong> персонально для тебя</li>
+                        <li><strong>Связь 24/7</strong> с преподавателем</li>
+                        <li><strong>Клуб учеников</strong> для поддержки</li>
+                    </ul>
+
+                    <h2>Преподаватель</h2>
+                </div>
+
+                <div class="course-teacher">
+                    <img src="images/teacher-biology.jpg" alt="Амина Авиценна" class="course-teacher-avatar">
+                    <div class="course-teacher-info">
+                        <span class="badge">⭐ Эксперт ОГЭ</span>
+                        <h3>Амина Авиценна</h3>
+                        <p><strong>Специализация:</strong> Биология ОГЭ и вузовская программа</p>
+                        <p><strong>Опыт:</strong> 6+ лет обучения</p>
+                        <p><strong>Успехи учеников:</strong> 200+ студентов с средним баллом 35+</p>
+                        <p>Самый понимающий и чуткий преподаватель! Объясняет сложное просто. Помогает каждому ученику найти подход к предмету.</p>
+                    </div>
+                </div>
+
+                <div class="course-reviews">
+                    <h2>💬 Отзывы учеников курса</h2>
+                    <div class="reviews-container">
+                        <div class="review-item">
+                            <div class="stars">⭐⭐⭐⭐⭐</div>
+                            <div class="text">"Амина — супер преподаватель! Биология стала понятной и интересной. Сдала на 5!"</div>
+                            <div class="author">Валерия Л., результат ОГЭ: 5</div>
+                        </div>
+                        <div class="review-item">
+                            <div class="stars">⭐⭐⭐⭐⭐</div>
+                            <div class="text">"Было страшно, теперь уверен. Система пробников и объяснения помогли разобраться во всём."</div>
+                            <div class="author">Игорь К., результат ОГЭ: 34/38</div>
+                        </div>
+                        <div class="review-item">
+                            <div class="stars">⭐⭐⭐⭐⭐</div>
+                            <div class="text">"Чуткое отношение преподавателя к каждому ученику. Она помогла мне полюбить биологию!"</div>
+                            <div class="author">Софья М., результат ОГЭ: 5</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="course-cta">
+                    <h2>Готов разобраться в биологии?</h2>
+                    <p>Выбери тариф и начни подготовку</p>
+                    <button class="course-cta-btn" onclick="window.location.href='index.html'">Все тарифы</button>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer class="footer">
+        <div class="container footer-content">
+            <div class="footer-section">
+                <h4>StudyUp</h4>
+                <p>Онлайн-подготовка к ОГЭ</p>
+                <p class="contact">support@studyup.ru</p>
+            </div>
+            <div class="footer-section">
+                <h4>Документы</h4>
+                <ul>
+                    <li><a href="offer.html">Оферта</a></li>
+                    <li><a href="policy.html">Политика конфиденциальности</a></li>
+                    <li><a href="license.html">Лицензия</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h4>Соцсети</h4>
+                <ul>
+                    <li><a href="https://vk.ru/studyuponlineschool" target="_blank" rel="noopener">ВКонтакте</a></li>
+                    <li><a href="https://t.me/schoolstudyup" target="_blank" rel="noopener">Telegram</a></li>
+                    <li><a href="https://youtube.com/@studyup" target="_blank" rel="noopener">YouTube</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2026 StudyUp. Все права защищены.</p>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>

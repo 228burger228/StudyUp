@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Курс по ОГЭ Английский язык — StudyUp</title>
+    <link rel="stylesheet" href="styles/main.css">
+    <link rel="stylesheet" href="styles/course-page.css">
+</head>
+<body>
+    <!-- Навигация -->
+    <header class="header">
+        <div class="container nav-container">
+            <a href="index.html" class="logo">
+                <img src="images/Logo11131" alt="Logo" class="logo-img">
+                <span class="logo-text">STUDY UP</span>
+            </a>
+            <button class="menu-btn" id="menuToggle" aria-label="Открыть меню">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+        </div>
+    </header>
+
+    <!-- Меню -->
+    <div class="fullscreen-menu" id="fullscreenMenu">
+        <button class="close-menu-btn" id="menuClose">&times;</button>
+        <nav class="menu-links">
+            <a href="index.html#hero">ОГЭ</a>
+            <a href="index.html#for-whom">Кому подойдёт</a>
+            <a href="index.html#team">Преподаватели</a>
+            <a href="index.html#courses">Курсы</a>
+            <a href="index.html#reviews">Отзывы</a>
+            <a href="index.html#faq">FAQ</a>
+        </nav>
+    </div>
+
+    <!-- Основной контент -->
+    <main class="course-page">
+        <!-- Hero -->
+        <section class="course-hero">
+            <h1>🌍 Подготовка к ОГЭ по Английскому языку</h1>
+            <p>Самый общительный преподаватель нашей школы научит говорить и писать!</p>
+            <button class="course-hero-btn" onclick="document.querySelector('.course-cta').scrollIntoView({behavior: 'smooth'})">Записаться на курс</button>
+        </section>
+
+        <div class="course-container">
+            <!-- Основная информация -->
+            <div class="course-main">
+                <div class="course-info-grid">
+                    <div class="course-info-item">
+                        <div class="label">Уровень</div>
+                        <div class="value">9 класс</div>
+                    </div>
+                    <div class="course-info-item">
+                        <div class="label">Формат</div>
+                        <div class="value">Мини-группы</div>
+                    </div>
+                    <div class="course-info-item">
+                        <div class="label">Занятий</div>
+                        <div class="value accent">2 в неделю</div>
+                    </div>
+                    <div class="course-info-item">
+                        <div class="label">Поддержка</div>
+                        <div class="value">24/7</div>
+                    </div>
+                </div>
+
+                <!-- Описание -->
+                <div class="course-content">
+                    <h2>Что ты получишь</h2>
+                    
+                    <h3>📊 Полная теория для экзамена</h3>
+                    <p>100% необходимой теории без воды. Grammar, vocabulary, speaking skills — всё по критериям ОГЭ.</p>
+
+                    <h3>💬 Уверенно говорить и писать</h3>
+                    <p>Благодаря интерактивным занятиям и регулярной практике, ты перестанешь бояться говорить по-английски.</p>
+
+                    <h3>📝 Из чего состоит курс:</h3>
+                    <ul class="course-list">
+                        <li><strong>2+ интерактивных вебинара в неделю</strong> с топовым преподавателем</li>
+                        <li><strong>Дополнительные разговорные клубы</strong> для практики speaking</li>
+                        <li><strong>Регулярные пробники</strong> экзамена показывают твой прогресс</li>
+                        <li><strong>Грамматика по ошибкам</strong> — разбираем именно то, что ты не знаешь</li>
+                        <li><strong>Подготовка к устной части</strong> с преподавателем</li>
+                        <li><strong>Связь 24/7</strong> в TG/Discord</li>
+                        <li><strong>Закрытый клуб</strong> для обмена опытом</li>
+                    </ul>
+
+                    <h2>Преподаватель</h2>
+                </div>
+
+                <!-- Преподаватель -->
+                <div class="course-teacher">
+                    <img src="images/teacher-english.jpg" alt="Полина Эминем" class="course-teacher-avatar">
+                    <div class="course-teacher-info">
+                        <span class="badge">⭐ Эксперт ОГЭ</span>
+                        <h3>Полина Эминем</h3>
+                        <p><strong>Специализация:</strong> Английский язык ОГЭ</p>
+                        <p><strong>Опыт:</strong> 5+ лет обучения</p>
+                        <p><strong>Успехи учеников:</strong> 300+ студентов, средний результат 4-5</p>
+                        <p>Самый общительный и зажигательный преподаватель нашей школы! 🔥 Делает английский интересным и доступным. Победитель множества олимпиад.</p>
+                    </div>
+                </div>
+
+                <!-- Отзывы -->
+                <div class="course-reviews">
+                    <h2>💬 Отзывы учеников курса</h2>
+                    
+                    <div class="reviews-container">
+                        <div class="review-item">
+                            <div class="stars">⭐⭐⭐⭐⭐</div>
+                            <div class="text">"Спасибо за крутые объяснения! Написала ОГЭ на 66/68. Очень благодарна за терпение и качество обучения!"</div>
+                            <div class="author">Екатерина М., результат ОГЭ: 5 (66/68)</div>
+                        </div>
+
+                        <div class="review-item">
+                            <div class="stars">⭐⭐⭐⭐⭐</div>
+                            <div class="text">"Не боялась говорить, потому что преподаватель создала комфортную атмосферу. На экзамене было легко!"</div>
+                            <div class="author">София К., результат ОГЭ: 5</div>
+                        </div>
+
+                        <div class="review-item">
+                            <div class="stars">⭐⭐⭐⭐⭐</div>
+                            <div class="text">"Лучший курс, который я пробовала. Все понятно объясняется, и ты реально видишь свой прогресс!"</div>
+                            <div class="author">Мария С., результат ОГЭ: 5</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- CTA -->
+                <div class="course-cta">
+                    <h2>Готов говорить по-английски?</h2>
+                    <p>Выбери тариф и начни подготовку уже сегодня</p>
+                    <button class="course-cta-btn" onclick="window.location.href='index.html'">Все тарифы и цены</button>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Подвал -->
+    <footer class="footer">
+        <div class="container footer-content">
+            <div class="footer-section">
+                <h4>StudyUp</h4>
+                <p>Онлайн-подготовка к ОГЭ</p>
+                <p class="contact">support@studyup.ru</p>
+            </div>
+            <div class="footer-section">
+                <h4>Документы</h4>
+                <ul>
+                    <li><a href="offer.html">Оферта</a></li>
+                    <li><a href="policy.html">Политика конфиденциальности</a></li>
+                    <li><a href="license.html">Лицензия</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h4>Соцсети</h4>
+                <ul>
+                    <li><a href="https://vk.ru/studyuponlineschool" target="_blank" rel="noopener">ВКонтакте</a></li>
+                    <li><a href="https://t.me/schoolstudyup" target="_blank" rel="noopener">Telegram</a></li>
+                    <li><a href="https://youtube.com/@studyup" target="_blank" rel="noopener">YouTube</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2026 StudyUp. Все права защищены.</p>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
